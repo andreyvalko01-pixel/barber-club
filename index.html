@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BARBER / CLUB — барбершоп у Львові</title>
+  <meta name="description" content="Чоловічі стрижки, оформлення бороди та королівське гоління у Львові. Онлайн-запис до майстра.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">BARBER / CLUB</a>
+      <nav class="nav" id="nav">
+        <a href="#top" class="nav__link is-active">Головна</a>
+        <a href="#masters" class="nav__link">Майстри</a>
+        <a href="#prices" class="nav__link">Послуги</a>
+        <a href="#gallery" class="nav__link">Галерея</a>
+        <a href="#contacts" class="nav__link">Контакти</a>
+      </nav>
+      <a href="#booking" class="btn btn--small header__cta">Записатися</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop')"></div>
+      <div class="container hero__content">
+        <p class="eyebrow">Барбершоп у Львові</p>
+        <h1 class="hero__title">Твій стиль.<br><span>Наша майстерність.</span></h1>
+        <p class="hero__text">Сучасні стрижки, увага до деталей та впевненість у кожному русі.</p>
+        <a href="#booking" class="btn">Записатися <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="container grid-main">
+      <section class="block" id="masters">
+        <div class="block__head">
+          <h2 class="block__title">Наші майстри</h2>
+        </div>
+        <div class="masters" id="masters-list"></div>
+      </section>
+
+      <section class="block" id="prices">
+        <div class="block__head">
+          <h2 class="block__title">Послуги та ціни</h2>
+        </div>
+        <ul class="prices" id="prices-list"></ul>
+      </section>
+
+      <section class="block booking" id="booking">
+        <div class="block__head">
+          <h2 class="block__title">Запис на стрижку</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="steps__item is-current" data-step="1"><span>1</span> Майстер</li>
+          <li class="steps__item" data-step="2"><span>2</span> Дата</li>
+          <li class="steps__item" data-step="3"><span>3</span> Час</li>
+        </ol>
+
+        <form class="booking__form" id="booking-form" novalidate>
+          <label class="field">
+            <span class="field__label">Майстер</span>
+            <select name="master" id="booking-master" required></select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Послуга</span>
+            <select name="service" id="booking-service" required></select>
+          </label>
+
+          <div class="field">
+            <div class="calendar__head">
+              <span class="field__label">Оберіть дату</span>
+              <div>
+                <button type="button" class="icon-btn" id="week-prev" aria-label="Попередній тиждень">‹</button>
+                <button type="button" class="icon-btn" id="week-next" aria-label="Наступний тиждень">›</button>
+              </div>
+            </div>
+            <div class="calendar" id="calendar"></div>
+          </div>
+
+          <div class="field">
+            <span class="field__label">Оберіть час</span>
+            <div class="slots" id="slots"><p class="muted">Спочатку оберіть дату</p></div>
+          </div>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Ім'я</span>
+              <input type="text" name="name" placeholder="Як до вас звертатись" required>
+            </label>
+            <label class="field">
+              <span class="field__label">Телефон</span>
+              <input type="tel" name="phone" placeholder="+380" required>
+            </label>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button type="submit" class="btn btn--wide">Записатися <span aria-hidden="true">→</span></button>
+        </form>
+
+        <div class="booking__done" id="booking-done" hidden>
+          <h3>Дякуємо, ви записані!</h3>
+          <p id="booking-summary"></p>
+          <button type="button" class="btn btn--ghost" id="booking-again">Новий запис</button>
+        </div>
+      </section>
+
+      <section class="block block--wide" id="gallery">
+        <div class="block__head">
+          <h2 class="block__title">Наші роботи</h2>
+        </div>
+        <div class="gallery" id="gallery-list"></div>
+      </section>
+    </div>
+
+    <section class="contacts" id="contacts">
+      <div class="container contacts__inner">
+        <div>
+          <h2 class="block__title">Контакти</h2>
+          <p>вул. Галицька, 12, Львів</p>
+          <p><a href="tel:+380671234567">+38 (067) 123 45 67</a></p>
+          <p class="muted">Щодня з 10:00 до 21:00</p>
+        </div>
+        <iframe class="contacts__map" title="Карта"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=24.0275%2C49.8395%2C24.0365%2C49.8445&amp;layer=mapnik&amp;marker=49.842%2C24.032"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> BARBER / CLUB</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Закрити">×</button>
+    <img alt="">
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
