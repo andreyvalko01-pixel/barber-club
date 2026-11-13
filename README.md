@@ -1,5 +1,7 @@
 # BARBER / CLUB
 
+**Живе демо:** https://andreyvalko01-pixel.github.io/barber-club/
+
 Лендінг барбершопу з онлайн-записом до майстра.
 
 ![Скріншот](screenshots/desktop.png)
